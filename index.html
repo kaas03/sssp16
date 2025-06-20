@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Secondary School - Pathara Budharam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a5f23;
+            --secondary: #e6b325;
+            --accent: #c62828;
+            --light: #f5f5f5;
+            --dark: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #0d3d14);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header h2 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background-color: var(--secondary);
+            position: sticky;
+            top: 100px;
+            z-index: 999;
+            box-shadow: var(--shadow);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--dark);
+            font-size: 1.5rem;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #menu {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #menu ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #menu ul li {
+            position: relative;
+        }
+
+        #menu ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        #menu ul li a:hover, 
+        #menu ul li a.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        #menu ul ul {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: var(--shadow);
+            min-width: 250px;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        #menu ul ul li {
+            width: 100%;
+        }
+
+        #menu ul li:hover > ul {
+            display: flex;
+        }
+
+        /* Login Portal Styles */
+        .login-portal-item > a {
+            background-color: rgba(198, 40, 40, 0.1);
+            position: relative;
+        }
+
+        .login-portal-item > a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            opacity: 0.8;
+        }
+
+        .login-type {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+        }
+
+        .login-type i {
+            margin-right: 10px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .student-login { color: #2196F3; }
+        .class-teacher-login { color: #4CAF50; }
+        .teacher-login { color: #9C27B0; }
+        .admin-login { color: #FF5722; }
+
+        /* Notice Section */
+        .notice-container {
+            background-color: #e3f2fd;
+            padding: 0.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #bbdefb;
+        }
+
+        .notice-header {
+            display: flex;
+            align-items: center;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: bold;
+        }
+
+        .notice-header i {
+            margin-right: 10px;
+        }
+
+        .notice-content {
+            padding: 0.5rem 1rem;
+            overflow: hidden;
+            height: 40px;
+            position: relative;
+        }
+
+        .scrolling-notices {
+            position: absolute;
+            width: 100%;
+            animation: scrollNotices 20s linear infinite;
+        }
+
+        .scrolling-notices a {
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .scrolling-notices a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes scrollNotices {
+            0% { top: 0; }
+            25% { top: -40px; }
+            50% { top: -80px; }
+            75% { top: -120px; }
+            100% { top: -160px; }
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            background: linear-gradient(to right, var(--secondary), #ffd54f);
+            color: var(--dark);
+            text-align: center;
+            padding: 0.8rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        .about {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .stat-item .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .stat-item .label {
+            font-size: 1rem;
+            color: var(--dark);
+        }
+
+        /* Gallery */
+        .gallery {
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Faculty Section */
+        .faculty {
+            margin-bottom: 2rem;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .faculty-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .faculty-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .faculty-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .faculty-card:hover .faculty-img img {
+            transform: scale(1.1);
+        }
+
+        .faculty-info {
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .faculty-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .faculty-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+
+        @keyframes modalopen {
+            from { opacity: 0; transform: translateY(-60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 5px rgba(26, 95, 35, 0.3);
+        }
+
+        .login-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0d3d14;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #111);
+            color: white;
+            padding: 2.5rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .contact-info {
+            margin-bottom: 1rem;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            margin-right: 10px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .quick-links a {
+            display: block;
+            color: #ddd;
+            margin-bottom: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .quick-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .map-container {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #444;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Credits */
+        .credits {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            font-weight: 500;
+        }
+
+        .credits img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-container {
+                top: 80px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+            
+            #menu ul {
+                flex-direction: column;
+                display: none;
+            }
+            
+            #menu ul.show {
+                display: flex;
+            }
+            
+            #menu ul li {
+                width: 100%;
+            }
+            
+            #menu ul ul {
+                position: static;
+                box-shadow: none;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin-bottom: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .modal-content {
+                width: 90%;
+                margin: 10% auto;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            header {
+                padding: 1rem 0;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.1rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Shree Secondary School Pathara Budharam, Rautahat, Nepal</h1>
+        <h2>Technical Stream in Computer Science (9-12)</h2>
+    </header>
+
+    <!-- Navigation -->
+    <div class="nav-container">
+        <div id="menu">
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul id="mainMenu">
+                  <li><a href="C:\Users\KAAS IT\Desktop\school project\index.html" class="active"><i class="fas fa-home" ></i> Home</a></li>
+            <li>
+                <a href="#"><i class="fas fa-building"></i> Department</a>
+                <ul>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\adminstative.html"><i class="fas fa-user-tie"></i> Administrative Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\examcoodi.html"><i class="fas fa-file-alt"></i> Exam Coordinating Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\technical.html"><i class="fas fa-laptop-code"></i> Technical Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\nepali.html"><i class="fas fa-book"></i> Nepali Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\english.html"><i class="fas fa-language"></i> English Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\maths.html"><i class="fas fa-calculator"></i> Maths Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\science.html"><i class="fas fa-flask"></i> Science Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\social.html"><i class="fas fa-globe-asia"></i> Social Studies Department</a></li>
+                    <li><a href="C:\Users\KAAS IT\Desktop\school project\EPH.html"><i class="fas fa-heartbeat"></i> EPH Department</a></li>
+                </ul>
+            </li>
+            <li><a href="C:\Users\KAAS IT\Desktop\school project\gallery.html"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="C:\Users\KAAS IT\Desktop\school project\form.html"><i class="fas fa-file-signature"></i> Admission Form</a></li>
+          
+                <li><a href="https://earth.google.com/web/search/Pathara+Budhram+High+School,+Pathara+Budharampur/@26.90921257,85.20167035,109.43423202a,743.92227605d,35y,0h,0t,0r/data=Cp8BGnESawolMHgzOWVjYTNiOGJmYTFlOWEzOjB4ODQ5YTQ0MzI2OTkyYjljORkT4Kqhw-g6QCGzz2OU50xVQCowUGF0aGFyYSBCdWRocmFtIEhpZ2ggU2Nob29sLCBQYXRoYXJhIEJ1ZGhhcmFtcHVyGAIgASImCiQJyLvSCdHoOkARb2MXwoPoOkAZW8bss_9MVUAh_VUaiNFMVUBCAggBQgIIAEoNCP___________wEQAA">
+                    <i class="fas fa-map-marker-alt"></i> Location</a></li>
+                <!-- Added Login Portal -->
+                <li class="login-portal-item">
+                    <a href="#"><i class="fas fa-sign-in-alt"></i> Login Portal</a>
+                    <ul>
+                        <li><a href="#" class="login-type student-login" data-login-type="student">
+                            <i class="fas fa-user-graduate"></i> Student Login
+                        </a></li>
+                        <li><a href="#" class="login-type class-teacher-login" data-login-type="class-teacher">
+                            <i class="fas fa-user-tie"></i> Class Teacher Login
+                        </a></li>
+                        <li><a href="#" class="login-type teacher-login" data-login-type="teacher">
+                            <i class="fas fa-chalkboard-teacher"></i> Teacher Login
+                        </a></li>
+                        <li><a href="#" class="login-type admin-login" data-login-type="admin">
+                            <i class="fas fa-user-cog"></i> Administrative Login
+                        </a></li>
+                    </ul>
+                </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+
+    <!-- Notice Section -->
+    <div class="notice-container">
+        <div class="notice-header">
+            <i class="fas fa-bullhorn"></i>
+            Notice
+        </div>
+        <div class="notice-content">
+            <div class="scrolling-notices">
+                <a href="#">Last Notice for Registration Form of Class 10</a>
+                <a href="#">Notice for Registration Form of Class 09</a>
+                <a href="#">Annual Sports Week Schedule Released</a>
+                <a href="#">Parent-Teacher Meeting on 25th November</a>
+                <a href="#">Vacancy for Mathematics Teacher</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section class="about">
+            <h2 class="section-title">About Our School</h2>
+            <p>
+                Welcome to Shree Secondary School, Pathara Budharam. Located in Nepal, Madhesh Pradesh, Rautahat, Maulapur Municipality Ward 06, our institution was established in 2014 BS. With a rich history of academic excellence, we have been offering a Diploma in Computer Science since 2073 BS.
+            </p>
+            <p>
+                Our mission is to provide quality education that empowers students to become responsible citizens and future leaders. We focus on holistic development through academic rigor, extracurricular activities, and character building.
+            </p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="number">67+</div>
+                    <div class="label">Years of Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">1200+</div>
+                    <div class="label">Students Enrolled</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">30+</div>
+                    <div class="label">Qualified Teachers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="number">4+</div>
+                    <div class="label">Courses Offered</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery">
+            <h2 class="section-title">Our Campus</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Main Building">
+                    <div class="gallery-caption">Main Building</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Classroom">
+                    <div class="gallery-caption">Modern Classroom</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Library">
+                    <div class="gallery-caption">Library</div>
+                </div>
+                
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty Section -->
+        <section class="faculty">
+            <h2 class="section-title">Our Faculty</h2>
+            <div class="faculty-grid">
+                <div class="faculty-card">
+                    <div class="faculty-img">
+                        <img src="C:\Users\KAAS IT\Desktop\school project\teacher\principal.jpg" alt="Principal">
+                    </div>
+                    <div class="faculty-info">
+                        <h4>Rajesh Singh</h4>
+                        <p>Principal</p>
+                        <p>Master in Mathematics</p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img">
+                        <img src="C:\Users\KAAS IT\Desktop\school project\teacher\unkown1.jpg" alt="Nepali">
+                    </div>
+                    <div class="faculty-info">
+                        <h4>Mr. Rambishawas Pd. Jaiswal</h4>
+                        <p>Nepali Department</p>
+                        <p>Master in Nepali
+                        </p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img">
+                        <img src="C:\Users\KAAS IT\Desktop\school project\teacher\arun.jpg" alt="Science">
+                    </div>
+                    <div class="faculty-info">
+                        <h4>Arun Shah</h4>
+                        <p>Science Department</p>
+                        <p>M.Sc in Physics</p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img">
+                        <img src="C:\Users\KAAS IT\Desktop\school project\teacher\niraj.jpg" alt="technical">
+                    </div>
+                    <div class="faculty-info">
+                        <h4>Niraj Pd. Jaiswal</h4>
+                        <p>Technical Department</p>
+                        <p>B.Sc in Computer</p>
+                    </div>
+                </div>
+                <div class="faculty-card">
+                    <div class="faculty-img">
+                        <img src="C:\Users\KAAS IT\Desktop\school project\teacher\unkown.png" alt="Nepali">
+                    </div>
+                    <div class="faculty-info">
+                        <h4>Mr. Smriti  Jaiswal</h4>
+                        <p>English Department</p>
+                        <p>Master in English
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+
+    <!-- Login Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="login-header">
+                <div class="login-icon" id="loginIcon"></div>
+                <h2 id="loginTitle">Login to Portal</h2>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <div class="login-footer">
+                <a href="#" id="forgotPassword">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maulapur Municipality Ward 06, Rautahat, Nepal</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <span>mavi.pathara2014@gmail.com</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+977-9845374108</span>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="quick-links">
+                    <a href="#"><i class="fas fa-arrow-right"></i> Home</a>
+                    <a href="#"><i class="fas fa-arrow-right"></i> About Us</a>
+                    <a href="#"><i class="fas fa-arrow-right"></i> Academic Programs</a>
+                    <a href="#"><i class="fas fa-arrow-right"></i> Admission</a>
+                    <a href="#"><i class="fas fa-arrow-right"></i> News & Events</a>
+                    <a href="#"><i class="fas fa-arrow-right"></i> Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Location</h3>
+                <div class="map-container">
+                    <!-- In a real implementation, this would be a Google Maps iframe -->
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; background-color: #2c5e2e;">
+                      <a href="https://earth.google.com/web/search/Pathara+Budhram+High+School,+Pathara+Budharampur/@26.90921257,85.20167035,109.43423202a,743.92227605d,35y,0h,0t,0r/data=Cp8BGnESawolMHgzOWVjYTNiOGJmYTFlOWEzOjB4ODQ5YTQ0MzI2OTkyYjljORkT4Kqhw-g6QCGzz2OU50xVQCowUGF0aGFyYSBCdWRocmFtIEhpZ2ggU2Nob29sLCBQYXRoYXJhIEJ1ZGhhcmFtcHVyGAIgASImCiQJyLvSCdHoOkARb2MXwoPoOkAZW8bss_9MVUAh_VUaiNFMVUBCAggBQgIIAEoNCP___________wEQAA" > <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: white;"></i>
+                    </div></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Shree Secondary School, Pathara Budharam. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Credits -->
+    <div class="credits">
+        <h3>Created by Kundan Shah, Class 10 "Technical" (2082)</h3>
+        <p>Special Thanks To Technical Department</p>
+        <div class="placeholder-img">
+            <img src="C:\Users\KAAS IT\Desktop\school project\teacher\kundan.jpg"
+            <i class="fas fa-user-graduate" style="font-size: 4rem; background-color: white; color: var(--primary); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 1rem auto;"></i>   </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            mainMenu.classList.toggle('show');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuToggle.contains(e.target) && !mainMenu.contains(e.target)) {
+                mainMenu.classList.remove('show');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 120,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after click
+                    mainMenu.classList.remove('show');
+                }
+            });
+        });
+        
+        // Set active menu item
+        const currentLocation = location.pathname;
+        const menuItems = document.querySelectorAll('#menu ul li a');
+        
+        menuItems.forEach(item => {
+            if (item.getAttribute('href') === currentLocation) {
+                item.classList.add('active');
+            }
+        });
+        
+        // Gallery hover effect enhancement
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.gallery-caption').style.opacity = '1';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.gallery-caption').style.opacity = '0.9';
+            });
+        });
+        
+        // Login Modal Functionality
+        const modal = document.getElementById('loginModal');
+        const loginLinks = document.querySelectorAll('.login-type');
+        const closeModal = document.querySelector('.close');
+        const loginTitle = document.getElementById('loginTitle');
+        const loginIcon = document.getElementById('loginIcon');
+        const loginForm = document.getElementById('loginForm');
+        const forgotPassword = document.getElementById('forgotPassword');
+        
+        // Open modal with appropriate login type
+        loginLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const loginType = link.getAttribute('data-login-type');
+                
+                // Set modal content based on login type
+                switch(loginType) {
+                    case 'student':
+                        loginTitle.textContent = 'Student Login';
+                        loginIcon.innerHTML = '<i class="fas fa-user-graduate student-login"></i>';
+                        break;
+                    case 'class-teacher':
+                        loginTitle.textContent = 'Class Teacher Login';
+                        loginIcon.innerHTML = '<i class="fas fa-user-tie class-teacher-login"></i>';
+                        break;
+                    case 'teacher':
+                        loginTitle.textContent = 'Teacher Login';
+                        loginIcon.innerHTML = '<i class="fas fa-chalkboard-teacher teacher-login"></i>';
+                        break;
+                    case 'admin':
+                        loginTitle.textContent = 'Administrative Login';
+                        loginIcon.innerHTML = '<i class="fas fa-user-cog admin-login"></i>';
+                        break;
+                }
+                
+                modal.style.display = 'block';
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Handle form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (username && password) {
+                // In a real implementation, this would send data to the server
+                alert(`Login attempt for ${loginTitle.textContent}\nUsername: ${username}\nPassword: ${password}`);
+                
+                // Close modal after login attempt
+                modal.style.display = 'none';
+                
+                // Clear form
+                loginForm.reset();
+            } else {
+                alert('Please fill in both username and password');
+            }
+        });
+        
+        // Forgot password functionality
+        forgotPassword.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert(`Password reset instructions will be sent to the email associated with your ${loginTitle.textContent} account.`);
+        });
+    </script>
+</body>
+</html>
